@@ -10,6 +10,7 @@ nav {
     backdrop-filter: blur(10px);
     box-sizing: border-box; /* this makes the border be inner instead of outer */
     border-bottom: 1px solid black;
+    margin-bottom: 1em;
     /* position: fixed; */
     /* border-bottom: 1px solid black; */
     ul {
@@ -30,10 +31,9 @@ nav {
                 box-sizing: border-box; /* this makes the border be inner instead of outer */
                 justify-content: center;
                 align-items: center;
-                text-decoration: none;
+                text-decoration: none;                
                 color: white;
-                -webkit-text-stroke: 1px black;
-                font-size: 1em;
+                font-size: 1.5em;
                 height: 100%;
                 width: 100%;  
                 border-bottom: 3px solid transparent;

@@ -1,0 +1,9 @@
+<label for="location-selector">Select a country:</label>
+<select id="location-selector" (change)="onLocationChange($event)">
+    @for (location of locations; track location) {
+        <option [value]="location.id">{{ location.name }}</option>
+    }
+        
+</select>
+
+<p>Selected country code: {{ selectedLocationCode }}</p>
