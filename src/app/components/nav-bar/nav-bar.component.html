@@ -1,0 +1,7 @@
+<nav>
+    <ul>
+        @for (link of navLinks; track link) {
+            <li><a [ngClass]="{ active: this.router.url === link.url }" routerLink="{{ link.url }}">{{ link.label }}</a></li>
+        }
+    </ul>
+</nav>

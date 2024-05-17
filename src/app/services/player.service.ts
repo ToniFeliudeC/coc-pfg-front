@@ -10,6 +10,6 @@ export class PlayerService {
   constructor() { }
 
   getPlayer(playerTag: string): any {
-    return this.http.get('http://127.0.0.1:5000/coc-api/players/' + playerTag)
+    return this.http.get(`http://127.0.0.1:5000/coc-api/players/${playerTag}`)
   }
 }
