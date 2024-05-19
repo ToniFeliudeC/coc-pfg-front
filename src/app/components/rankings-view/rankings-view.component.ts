@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CocTableComponent } from "../coc-table/coc-table.component";
 import { RankingsService } from '../../services/rankings.service';
-import { LocationSelectorComponent } from "../../location-selector/location-selector.component";
+import { LocationSelectorComponent } from "../location-selector/location-selector.component";
 
 @Component({
     selector: 'app-rankings-view',

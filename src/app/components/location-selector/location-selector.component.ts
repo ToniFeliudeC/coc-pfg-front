@@ -21,5 +21,5 @@ export class LocationSelectorComponent {
     this.locationIdEvent.emit(this.selectedLocationCode);
   }
 
-
+  
 }

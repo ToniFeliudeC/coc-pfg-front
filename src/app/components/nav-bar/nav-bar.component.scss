@@ -13,6 +13,10 @@ nav {
     margin-bottom: 1em;
     /* position: fixed; */
     /* border-bottom: 1px solid black; */
+    @media screen and (max-width: 600px) {
+        height: fit-content;
+        padding: 1em;
+    }
     ul {
         display: flex;
         gap: 5rem;
@@ -48,6 +52,11 @@ nav {
             .active { /* this is the class that is added to the active link */
                 border-bottom: 3px solid white;
             }
+        }
+
+        @media screen and (max-width: 600px) {
+            flex-direction: column;
+            
         }
     
     }

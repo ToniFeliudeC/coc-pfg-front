@@ -1,0 +1,14 @@
+.location-selector {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 1em;
+    border-radius: 25px;
+    font-family: "SuperCell Magic";
+}
+
+option {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}

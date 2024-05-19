@@ -1,14 +1,15 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     min-height: 100vh;
     margin-left: 20%;
     margin-right: 20%;
     padding: 1em;
-    border-radius: 1%;
+    border-radius: 25px;
     border: 1px solid black;
     backdrop-filter: blur(10px);
+    gap: 1em;
 
     app-coc-table {
         width: 100%;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-coc-table',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './coc-table.component.scss'
 })
 export class CocTableComponent {
-
+  @Input() players: any;
 }
