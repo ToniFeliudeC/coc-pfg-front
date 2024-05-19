@@ -10,7 +10,7 @@ export class RankingsService {
 
   constructor() { }
 
-  getRanking(locationId: string): any {
+  getTrophiesRanking(locationId: string): any {
     return this.http.get(`http://127.0.0.1:5000/coc-api/locations/${locationId}/rankings/players`);
   }
 

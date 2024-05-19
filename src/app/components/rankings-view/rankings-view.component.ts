@@ -34,7 +34,7 @@ export class RankingsViewComponent {
     }
 
     loadRanking(locationId: string) {
-        this.rankingsService.getRanking(locationId).subscribe((ranking: any) => {
+        this.rankingsService.getTrophiesRanking(locationId).subscribe((ranking: any) => {
             this.selectedRanking = ranking;
         });
     }
