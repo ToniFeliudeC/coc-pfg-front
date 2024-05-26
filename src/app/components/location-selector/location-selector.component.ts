@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class LocationSelectorComponent {
   @Input({required: true}) locations: any;
   @Output() locationIdEvent = new EventEmitter<string>();
+  @Output() emptyTable = new EventEmitter<void>();
 
   ngOnInit() {
 
@@ -19,6 +20,7 @@ export class LocationSelectorComponent {
   onLocationChange(event: any) {
     this.selectedLocationCode = event.target.value;
     this.locationIdEvent.emit(this.selectedLocationCode);
+    this.emptyTable.emit();
   }
 
   

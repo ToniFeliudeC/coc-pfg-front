@@ -1,5 +1,7 @@
 @if (!players) {
-    <p>No location selected or location does not have rankings.</p>
+    <div class="spinner-container">
+        <div class="spinner-border" role="status"></div>
+    </div>
 } @else {
     <table>
         <thead>
@@ -14,7 +16,7 @@
             <tr>
                 <td>{{ player.name }}</td>
                 @if (player.clan) {
-                    <td>{{ player.clan.name }}</td>
+                    <td class="clan-td"> <img src="{{ player.clan.badgeUrls.small }}"/> {{ player.clan.name }}</td>
                 } @else {
                     <td class="no-clan-td">No clan</td>
                 }

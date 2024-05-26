@@ -1,4 +1,4 @@
 <div class="container">
-    <app-location-selector (locationIdEvent)="addLocationId($event)" [locations]="allLocations"></app-location-selector>
+    <app-location-selector (emptyTable)="clearPlayers()" (locationIdEvent)="addLocationId($event)" [locations]="countries"></app-location-selector>
     <app-coc-table [players]="selectedRanking"></app-coc-table>
 </div>

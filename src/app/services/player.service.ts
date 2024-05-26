@@ -1,15 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-
+import { GlobalConfig } from '../globals.config';
 @Injectable({
   providedIn: 'root'
 })
-export class PlayerService {
+export class PlayersService {
   private http = inject(HttpClient);
 
   constructor() { }
 
   getPlayer(playerTag: string): any {
-    return this.http.get(`http://127.0.0.1:5000/coc-api/players/${playerTag}`)
+    return this.http.get(`${GlobalConfig.API_BASE_URL}/${playerTag}`)
   }
+
+  getPlayerClan(playerTag: string): any {
+    return this.http.get(`${GlobalConfig.API_BASE_URL}/players/${playerTag}/clan`)
+  }
+
 }

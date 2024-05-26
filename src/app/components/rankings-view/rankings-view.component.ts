@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CocTableComponent } from "../coc-table/coc-table.component";
 import { RankingsService } from '../../services/rankings.service';
 import { LocationSelectorComponent } from "../location-selector/location-selector.component";
+import { LocationsService } from '../../services/locations.service';
 
 @Component({
     selector: 'app-rankings-view',
@@ -13,13 +14,14 @@ import { LocationSelectorComponent } from "../location-selector/location-selecto
 export class RankingsViewComponent {
     
     private rankingsService = inject(RankingsService);
+    private locationsService = inject(LocationsService);
 
     selectedRanking: any;
-    allLocations: any;
+    countries: any;
     selectedLocation: any;
 
     ngOnInit() {
-        this.loadLocations();
+        this.loadCountries();
     }
 
     addLocationId(locationId: any) {
@@ -27,9 +29,9 @@ export class RankingsViewComponent {
         console.log(this.selectedRanking);
     }
 
-    loadLocations() {
-        this.rankingsService.getLocations().subscribe((locations: any) => {
-            this.allLocations = locations;
+    loadCountries() {
+        this.locationsService.getCountries().subscribe((countries: any) => {
+            this.countries = countries;
         });
     }
 
@@ -37,6 +39,10 @@ export class RankingsViewComponent {
         this.rankingsService.getTrophiesRanking(locationId).subscribe((ranking: any) => {
             this.selectedRanking = ranking;
         });
+    }
+
+    clearPlayers() {
+        this.selectedRanking = null;
     }
 
 }
