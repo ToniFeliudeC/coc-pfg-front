@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
-import { PlayerService } from '../../services/player.service';
+import { Component, Input, OnInit, inject } from "@angular/core";
+import { PlayersService } from "../../services/player.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-player',
@@ -12,20 +13,25 @@ export class PlayerComponent implements OnInit {
 
   @Input() playerTag: string = '';
 
-  private playerService = inject(PlayerService);
+  private playersService: PlayersService = inject(PlayersService);
+  private route: ActivatedRoute = inject(ActivatedRoute);
 
   playerData: any;
 
-  ngOnInit() { 
-    this.loadPlayer();
+  ngOnInit() {
+    this.route.paramMap.subscribe((params: { get: (arg0: string) => any; }) => {
+      const playerTag = params.get('playerTag');
+      if (playerTag) {
+        this.playerTag = playerTag;
+        this.loadPlayer();
+      }
+    });
   }
 
   loadPlayer() {
-    this.playerService.getPlayer(this.playerTag).subscribe((player: any) => {
+    this.playersService.getPlayer(this.playerTag).subscribe((player: any) => {
       this.playerData = player;
       console.log(this.playerData);
     });
-
   }
-
 }

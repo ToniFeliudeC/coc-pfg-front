@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 1em;
+    border-radius: 25px;
+    border: 1px solid black;
+    backdrop-filter: blur(10px);
+
+    .rows-header {
+        display: flex;
+        flex-direction: row;
+        border-radius: 1em;
+        gap: 2px;
+        min-height: 20em;
+        background-color: rgb(131, 175, 233);
+        width: 100%;
+
+        .lvl-name-status-labels-row {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+            width: 33.3333333%;
+            .lvl-name-tag-status-container {
+                display: flex;
+                padding: 1em;
+                height: 50%;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 1em;
+                align-items: center;
+
+                .lvl-container {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.5em;
+                }
+                
+                .name-tag-status {
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    .tag {
+                        color: grey;
+                    }
+                }
+            }
+            .labels {
+                display: flex;
+                flex-wrap: wrap;
+                padding: 1em;
+                height: 50%;
+                background-color: yellow;
+            }
+            @media screen and (max-width: 1280px) {
+                align-items: center;
+            }
+        }
+        .clan-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100%;
+            width: 33.3333333%;
+        }
+
+        .league-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100%;
+            width: 33.3333333%;
+        }
+
+        @media screen and (max-width: 1280px) {
+            flex-direction: column;
+            margin-left: 1em;
+            margin-right: 1em;
+        }
+
+    }
+
+    @media screen and (max-width: 800px) {
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+}

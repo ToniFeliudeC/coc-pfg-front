@@ -1,3 +1,43 @@
-<h1>{{ playerData.name }}</h1>
-<h2>Clan name: {{ playerData.clan.name }}</h2>
-<h3>{{ playerData.clan.clanLevel }}</h3>
+<div class="container">
+    <div class="rows-header">
+        <div class="lvl-name-status-labels-row">
+            <div class="lvl-name-tag-status-container">
+                <div class="lvl-container">
+                    <img src="../../../assets/xp-small.webp" alt="Xp star">
+                    <h3>{{ playerData.expLevel }}</h3>
+                </div>
+                <div class="name-tag-status">
+                    <h3>{{ playerData.name }}</h3>
+                    <h4 class="tag">{{ playerData.tag }}</h4>
+                    <h4>{{ playerData.role }}</h4>
+                </div>
+            </div>
+            <div class="labels">
+                @for (label of playerData.labels; track label) {
+                    <div class="label">
+                        <img src="{{ label.iconUrls.small }}" alt="Player label">
+                    </div>
+                }
+            </div>
+        </div>
+        <hr>
+        <div class="clan-row">
+            <div class="clan-name">
+
+            </div>
+            <div class="clan-badge">
+
+            </div>
+            <div class="clan-preference">
+                <div class="icon"></div>
+                <div class="preference-test">Clan Wars</div>
+            </div>
+        </div>
+        <hr>
+        <div class="league-row">
+            <p>holas</p>
+        </div>
+    </div>
+</div>
+
+

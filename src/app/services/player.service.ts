@@ -10,7 +10,7 @@ export class PlayersService {
   constructor() { }
 
   getPlayer(playerTag: string): any {
-    return this.http.get(`${GlobalConfig.API_BASE_URL}/${playerTag}`)
+    return this.http.get(`${GlobalConfig.API_BASE_URL}/players/${playerTag}`)
   }
 
   getPlayerClan(playerTag: string): any {
