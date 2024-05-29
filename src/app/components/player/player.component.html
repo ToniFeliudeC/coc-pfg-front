@@ -22,20 +22,56 @@
         </div>
         <hr>
         <div class="clan-row">
-            <div class="clan-name">
-
-            </div>
-            <div class="clan-badge">
-
-            </div>
-            <div class="clan-preference">
-                <div class="icon"></div>
-                <div class="preference-test">Clan Wars</div>
+            <h3 class="clan-name">{{ playerData.clan.name }}</h3>
+            <img class="clan-badge" src="{{ playerData.clan.badgeUrls.medium }}"  alt="Clan badge">
+            <div class="clan-preference" [ngClass]="{inwar: playerData.warPreference == 'in'}">
+                <p>Clan Wars</p>
             </div>
         </div>
         <hr>
         <div class="league-row">
-            <p>holas</p>
+            <div class="league-trophies-container">
+                <img class="league-img" src="{{ playerData.league.iconUrls.medium }}" alt="League icon">
+                <div class="name-trophies-container">
+                    <h3>{{ playerData.league.name }}</h3>
+                    <div class="trophies-container">
+                        <img src="../../../assets/trophy.webp" alt="Trophy">
+                        <h4>{{ playerData.trophies }}</h4>
+                    </div>  
+                </div>
+            </div>
+            <div class="pb-trophies">
+                <p>Personal best:</p>
+                <div class="pb-trophies-container">
+                    <img src="../../../assets/trophy.webp" alt="Trophy">
+                    <h4>{{ playerData.bestTrophies }}</h4>
+                </div>
+            </div>
+            <div class="war-stars-won">
+                <p>Total war stars:</p>
+                <div class="stars-container">
+                    <img src="../../../assets/stars-3.webp" alt="Trophy">
+                    <h4>{{ playerData.warStars }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="troops-victories-container">
+        <div class="donated-troops">
+            <p>Donated troops:</p>
+            <div class="amount-container">{{ playerData.donations }}</div>
+        </div>
+        <div class="donated-troops">
+            <p>Received troops:</p>
+            <div class="amount-container">{{ playerData.donationsReceived }}</div>
+        </div>
+        <div class="donated-troops">
+            <p>Attack wins:</p>
+            <div class="amount-container">{{ playerData.attackWins }}</div>
+        </div>
+        <div class="donated-troops">
+            <p>Defense wins:</p>
+            <div class="amount-container">{{ playerData.defenseWins }}</div>
         </div>
     </div>
 </div>

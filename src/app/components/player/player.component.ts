@@ -1,11 +1,12 @@
 import { Component, Input, OnInit, inject } from "@angular/core";
 import { PlayersService } from "../../services/player.service";
 import { ActivatedRoute } from "@angular/router";
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: 'app-player',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './player.component.html',
   styleUrl: './player.component.scss'
 })
