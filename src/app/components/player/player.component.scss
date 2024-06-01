@@ -183,6 +183,7 @@
         .donated-troops {
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             font-size: 0.6em;
@@ -198,21 +199,45 @@
 
     .th-main-troops-container {
         display: flex;
-        border-radius: 1em;
-        min-height: 500px;
+        flex-direction: row;
         width: 100%;
-        background-color: rgba(0,0,0,0.5);
-        .th-and-troops-container {
+        height: fit-content;
+        align-items: center;
+
+        .th-container {
             display: flex;
-            background-color: red;
-            .th-container {
-                background-color: yellow;
+            justify-content: center;
+            align-items: center;
+            width: 20%;
+            height: 100%;
+            min-height: 100%;
+            padding: 5em;
+        }
+        .troops-container {
+            display: flex;
+            flex-direction: column;
+            padding: 1em;
+            width: 80%;
+            border-radius: 1em;
+            background-color: rgba(0,0,0,0.5);
+            gap: 1em;
+            .troop-boxes {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1em;
             }
-            .troops-container {
-                min-height: 500px;
-                width: 100%;
-                background-color: red;
-            }
+        }
+    }
+
+    .heroes-animals-spells-machines-container {
+        display: flex;
+        min-height: 500px;
+        background-color: rgba(0,0,0,0.5);
+        width: 100%;
+        border-radius: 1em;
+        .heroes-animals-container {
+            width: 20%;
+            background-color: blue;
         }
     }
 }

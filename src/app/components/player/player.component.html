@@ -22,8 +22,12 @@
         </div>
         <hr>
         <div class="clan-row">
-            <h3 class="clan-name">{{ playerData.clan.name }}</h3>
-            <img class="clan-badge" src="{{ playerData.clan.badgeUrls.medium }}"  alt="Clan badge">
+            @if (playerData.clan) {
+                <h3 class="clan-name">{{ playerData.clan.name }}</h3>
+                <img class="clan-badge" src="{{ playerData.clan.badgeUrls.medium }}"  alt="Clan badge">
+            } @else {
+                <h3 class="clan-name">No clan</h3>
+            }
             <div class="clan-preference" [ngClass]="{inwar: playerData.warPreference == 'in'}">
                 <p>Clan Wars</p>
             </div>
@@ -39,6 +43,7 @@
                         <h4>{{ playerData.trophies }}</h4>
                     </div>  
                 </div>
+
             </div>
             <div class="pb-trophies">
                 <p>Personal best:</p>
@@ -75,15 +80,27 @@
         </div>
     </div>
     <div class="th-main-troops-container">
-        <div class="th-and-troops-container">
-            <div class="th-container">
-                <img src="../../../assets/th-12.png" alt="Town hall">
+        <div class="th-container">
+            <img src="../../../assets/townhalls/th-12.png" alt="Town hall">
+        </div>
+        <div class="troops-container">
+            <h1>Troops</h1>
+            <div class="troop-boxes">
+                @for (troop of playerData.troops; track troop) {
+                    @if (troop.village === 'home') {
+                        <app-troop-icon [level]="troop.level" [name]="troop.name"/>
+                    }       
+                }
             </div>
-            <div class="troops-container">
-                <div class="troop-box">
-                    
-                </div>
-            </div>
+
+        </div>
+    </div>
+    <div class="heroes-animals-spells-machines-container">
+        <div class="heroes-animals-container">
+
+        </div>
+        <div class="spells-machines-container">
+
         </div>
     </div>
 </div>
