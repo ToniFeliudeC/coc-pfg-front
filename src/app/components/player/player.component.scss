@@ -157,6 +157,12 @@
             flex-direction: column;
             margin-left: 1em;
             margin-right: 1em;
+            // padding-left: 1em;
+            // padding-right: 1em;
+            hr {
+                align-self: center;
+                width: 95%;
+            }
         }
 
     }
@@ -186,6 +192,26 @@
                 padding-left: 1em;
                 padding-right: 1em;
                 border-radius: 1em;
+            }
+        }
+    }
+
+    .th-main-troops-container {
+        display: flex;
+        border-radius: 1em;
+        min-height: 500px;
+        width: 100%;
+        background-color: rgba(0,0,0,0.5);
+        .th-and-troops-container {
+            display: flex;
+            background-color: red;
+            .th-container {
+                background-color: yellow;
+            }
+            .troops-container {
+                min-height: 500px;
+                width: 100%;
+                background-color: red;
             }
         }
     }
