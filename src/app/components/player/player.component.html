@@ -4,16 +4,16 @@
             <div class="lvl-name-tag-status-container">
                 <div class="lvl-container">
                     <img src="../../../assets/xp-small.webp" alt="Xp star">
-                    <h3>{{ playerData.expLevel }}</h3>
+                    <h3>{{ playerData?.expLevel }}</h3>
                 </div>
                 <div class="name-tag-status">
-                    <h3>{{ playerData.name }}</h3>
-                    <h4 class="tag">{{ playerData.tag }}</h4>
-                    <h4>{{ playerData.role }}</h4>
+                    <h3>{{ playerData?.name }}</h3>
+                    <h4 class="tag">{{ playerData?.tag }}</h4>
+                    <h4>{{ playerData?.role }}</h4>
                 </div>
             </div>
             <div class="labels">
-                @for (label of playerData.labels; track label) {
+                @for (label of playerData?.labels; track label) {
                     <div class="label">
                         <img src="{{ label.iconUrls.small }}" alt="Player label">
                     </div>
@@ -23,40 +23,39 @@
         <hr>
         <div class="clan-row">
             @if (playerData.clan) {
-                <h3 class="clan-name">{{ playerData.clan.name }}</h3>
-                <img class="clan-badge" src="{{ playerData.clan.badgeUrls.medium }}"  alt="Clan badge">
+                <h3 class="clan-name">{{ playerData.clan?.name }}</h3>
+                <img class="clan-badge" src="{{ playerData.clan?.badgeUrls.medium }}"  alt="Clan badge">
             } @else {
                 <h3 class="clan-name">No clan</h3>
             }
-            <div class="clan-preference" [ngClass]="{inwar: playerData.warPreference == 'in'}">
+            <div class="clan-preference" [ngClass]="{inwar: playerData?.warPreference == 'in'}">
                 <p>Clan Wars</p>
             </div>
         </div>
         <hr>
         <div class="league-row">
             <div class="league-trophies-container">
-                <img class="league-img" src="{{ playerData.league.iconUrls.medium }}" alt="League icon">
+                <img class="league-img" src="{{ playerData.league?.iconUrls.medium }}" alt="League icon">
                 <div class="name-trophies-container">
-                    <h3>{{ playerData.league.name }}</h3>
+                    <h3>{{ playerData.league?.name }}</h3>
                     <div class="trophies-container">
                         <img src="../../../assets/trophy.webp" alt="Trophy">
-                        <h4>{{ playerData.trophies }}</h4>
+                        <h4>{{ playerData?.trophies }}</h4>
                     </div>  
                 </div>
-
             </div>
             <div class="pb-trophies">
                 <p>Personal best:</p>
                 <div class="pb-trophies-container">
                     <img src="../../../assets/trophy.webp" alt="Trophy">
-                    <h4>{{ playerData.bestTrophies }}</h4>
+                    <h4>{{ playerData?.bestTrophies }}</h4>
                 </div>
             </div>
             <div class="war-stars-won">
                 <p>Total war stars:</p>
                 <div class="stars-container">
                     <img src="../../../assets/stars-3.webp" alt="Trophy">
-                    <h4>{{ playerData.warStars }}</h4>
+                    <h4>{{ playerData?.warStars }}</h4>
                 </div>
             </div>
         </div>
@@ -64,43 +63,73 @@
     <div class="troops-victories-container">
         <div class="donated-troops">
             <p>Donated troops:</p>
-            <div class="amount-container">{{ playerData.donations }}</div>
+            <div class="amount-container">{{ playerData?.donations }}</div>
         </div>
         <div class="donated-troops">
             <p>Received troops:</p>
-            <div class="amount-container">{{ playerData.donationsReceived }}</div>
+            <div class="amount-container">{{ playerData?.donationsReceived }}</div>
         </div>
         <div class="donated-troops">
             <p>Attack wins:</p>
-            <div class="amount-container">{{ playerData.attackWins }}</div>
+            <div class="amount-container">{{ playerData?.attackWins }}</div>
         </div>
         <div class="donated-troops">
             <p>Defense wins:</p>
-            <div class="amount-container">{{ playerData.defenseWins }}</div>
+            <div class="amount-container">{{ playerData?.defenseWins }}</div>
         </div>
     </div>
     <div class="th-main-troops-container">
         <div class="th-container">
-            <img src="../../../assets/townhalls/th-12.png" alt="Town hall">
+            <img [src]="getTownhallImagePath()" alt="Town hall">
         </div>
         <div class="troops-container">
             <h1>Troops</h1>
             <div class="troop-boxes">
-                @for (troop of playerData.troops; track troop) {
-                    @if (troop.village === 'home') {
+                @for (troop of playerData?.troops; track troop) {
+                    @if (troop.village === 'home' && !isAnimal(troop.name)) {
                         <app-troop-icon [level]="troop.level" [name]="troop.name"/>
                     }       
                 }
             </div>
-
         </div>
     </div>
     <div class="heroes-animals-spells-machines-container">
         <div class="heroes-animals-container">
-
+            <div class="heroes-container">
+                <h1>Heroes</h1>
+                <div class="troop-boxes">
+                    @for (hero of playerData?.heroes; track hero) {
+                        @if (hero.village === 'home') {
+                            <app-troop-icon [level]="hero.level" [name]="hero.name"/>
+                        }
+                    } @empty {
+                        <p>No heroes yet!</p>
+                    }
+                </div>
+            </div>
+            <div class="animals-container">
+                <h1>Animals</h1>
+                <div class="troop-boxes">
+                    @for (troop of playerData?.troops; track troop) {
+                        @if (troop.village === 'home' && isAnimal(troop.name)) {
+                            <app-troop-icon [level]="troop?.level" [name]="troop.name"/>
+                        }
+                    }
+                    @if (!hasAnimals) {
+                        <p>No animals yet!</p>
+                    }
+                </div>
+            </div>
         </div>
         <div class="spells-machines-container">
-
+            <div class="spells-container">
+                <h1>Spells</h1>
+                <div class="troop-boxes">
+                    @for (spell of playerData.spells; track spell) {
+                        <app-troop-icon [level]="spell?.level" [name]="spell.name"/>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>

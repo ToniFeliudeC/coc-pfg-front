@@ -9,4 +9,9 @@ import { Component, Input } from '@angular/core';
 })
 export class CocTableComponent {
   @Input() players: any;
+
+  // Función para eliminar el primer carácter del tag
+  getTrimmedTag(tag: string): string {
+    return tag ? tag.substring(1) : '';
+  }
 }

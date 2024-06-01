@@ -14,7 +14,7 @@
         <tbody>
             @for (player of players; track player) {
             <tr>
-                <td>{{ player.name }}</td>
+                <td><a [href]="'/players/' + getTrimmedTag(player?.tag)">{{ player.name }}</a></td>
                 @if (player.clan) {
                     <td class="clan-td"> <img src="{{ player.clan.badgeUrls.small }}"/> {{ player.clan.name }}</td>
                 } @else {

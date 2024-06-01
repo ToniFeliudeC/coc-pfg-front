@@ -3,6 +3,7 @@ import { PlayersService } from "../../services/player.service";
 import { ActivatedRoute } from "@angular/router";
 import { NgClass } from "@angular/common";
 import { TroopIconComponent } from "../troop-icon/troop-icon.component";
+import { animals } from "./animals";
 
 @Component({
     selector: 'app-player',
@@ -17,6 +18,9 @@ export class PlayerComponent implements OnInit {
 
   private playersService: PlayersService = inject(PlayersService);
   private route: ActivatedRoute = inject(ActivatedRoute);
+  animalsNames = animals;
+  hasAnimals = false;
+  thImageName: string = '';
 
   playerData: any;
 
@@ -28,6 +32,21 @@ export class PlayerComponent implements OnInit {
         this.loadPlayer();
       }
     });
+    this.thImageName = this.playerData.townHallLevel
+  }
+
+  isAnimal(troopName: string): boolean {
+    if (this.animalsNames.some(name => name === troopName)) {
+      this.hasAnimals = true;
+    }
+    return this.animalsNames.some(name => name === troopName);
+  }
+
+  getTownhallImagePath(): string {
+    const townHallLevel = String(this.playerData.townHallLevel);
+    const townHallWeaponLevel = String(this.playerData.townHallWeaponLevel);
+   
+    return  "../../../assets/townhalls/" + townHallLevel + "." + townHallWeaponLevel + ".png";  
   }
 
   loadPlayer() {
