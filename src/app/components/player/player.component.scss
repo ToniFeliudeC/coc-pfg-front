@@ -282,6 +282,7 @@
                 padding: 1em;
                 box-sizing: border-box;
                 gap: 1em;
+                height: 100%;
                 .troop-boxes {
                     display: flex;
                     flex-wrap: wrap;
@@ -291,8 +292,8 @@
         }
         .spells-machines-container {
             display: flex;
-            flex-direction: row;
-
+            flex-direction: column;
+            gap: 1em;
             width: 70%;
             .spells-container {
                 display: flex;
@@ -310,6 +311,22 @@
                     gap: 1em;
                 }
             }
+            .siege-machines-container {
+                display: flex;
+                flex-direction: column;
+                border-radius: 1em;
+                box-sizing: border-box;
+                gap: 1em;
+                background-color: rgba(0, 0, 0, 0.5);
+                padding: 1em;
+                height: 100%;
+                .troop-boxes {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 1em;
+                }
+            }
+
         }
     }
 }

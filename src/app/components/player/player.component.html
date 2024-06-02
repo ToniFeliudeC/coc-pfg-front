@@ -86,7 +86,7 @@
             <h1>Troops</h1>
             <div class="troop-boxes">
                 @for (troop of playerData?.troops; track troop) {
-                    @if (troop.village === 'home' && !isAnimal(troop.name)) {
+                    @if (troop.village === 'home' && !isAnimal(troop.name) && !isSiegeMachine(troop.name)) {
                         <app-troop-icon [level]="troop.level" [name]="troop.name"/>
                     }       
                 }
@@ -127,6 +127,19 @@
                 <div class="troop-boxes">
                     @for (spell of playerData.spells; track spell) {
                         <app-troop-icon [level]="spell?.level" [name]="spell.name"/>
+                    }
+                </div>
+            </div>
+            <div class="siege-machines-container">
+                <h1>Siege Machines</h1>
+                <div class="troop-boxes">
+                    @for (troop of playerData.troops; track troop) {
+                        @if (isSiegeMachine(troop.name)) {
+                            <app-troop-icon  [level]="troop.level" [name]="troop.name" />
+                        }
+                    }
+                    @if (!hasSiegeMachines) {
+                        <p>No animals yet!</p>
                     }
                 </div>
             </div>

@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { NgClass } from "@angular/common";
 import { TroopIconComponent } from "../troop-icon/troop-icon.component";
 import { animals } from "./animals";
+import { siegeMachines } from "./siege-machines";
 
 @Component({
     selector: 'app-player',
@@ -19,8 +20,9 @@ export class PlayerComponent implements OnInit {
   private playersService: PlayersService = inject(PlayersService);
   private route: ActivatedRoute = inject(ActivatedRoute);
   animalsNames = animals;
+  siegeMachinesNames = siegeMachines;
   hasAnimals = false;
-  thImageName: string = '';
+  hasSiegeMachines = false;
 
   playerData: any;
 
@@ -32,7 +34,6 @@ export class PlayerComponent implements OnInit {
         this.loadPlayer();
       }
     });
-    this.thImageName = this.playerData.townHallLevel
   }
 
   isAnimal(troopName: string): boolean {
@@ -40,6 +41,13 @@ export class PlayerComponent implements OnInit {
       this.hasAnimals = true;
     }
     return this.animalsNames.some(name => name === troopName);
+  }
+
+  isSiegeMachine(troopName: string): boolean {
+    if (this.siegeMachinesNames.some(name => name === troopName)) {
+      this.hasSiegeMachines = true;
+    }
+    return this.siegeMachinesNames.some(name => name === troopName);
   }
 
   getTownhallImagePath(): string {
