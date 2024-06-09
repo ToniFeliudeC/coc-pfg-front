@@ -5,13 +5,14 @@ import { NgClass } from "@angular/common";
 import { TroopIconComponent } from "../troop-icon/troop-icon.component";
 import { animals } from "./animals";
 import { siegeMachines } from "./siege-machines";
+import { AchievementComponent } from "../achievement/achievement.component";
 
 @Component({
     selector: 'app-player',
     standalone: true,
     templateUrl: './player.component.html',
     styleUrl: './player.component.scss',
-    imports: [NgClass, TroopIconComponent]
+    imports: [NgClass, TroopIconComponent, AchievementComponent]
 })
 export class PlayerComponent implements OnInit {
 
@@ -25,6 +26,7 @@ export class PlayerComponent implements OnInit {
   hasSiegeMachines = false;
 
   playerData: any;
+  playerHomeAchievements: any;
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: { get: (arg0: string) => any; }) => {
@@ -32,6 +34,7 @@ export class PlayerComponent implements OnInit {
       if (playerTag) {
         this.playerTag = playerTag;
         this.loadPlayer();
+        this.loadHomeAchivements();
       }
     });
   }
@@ -53,6 +56,10 @@ export class PlayerComponent implements OnInit {
   getTownhallImagePath(): string {
     const townHallLevel = String(this.playerData.townHallLevel);
     const townHallWeaponLevel = String(this.playerData.townHallWeaponLevel);
+
+    if (townHallWeaponLevel === 'undefined') {
+      return "../../../assets/townhalls/" + townHallLevel + ".png";
+    }
    
     return  "../../../assets/townhalls/" + townHallLevel + "." + townHallWeaponLevel + ".png";  
   }
@@ -62,5 +69,12 @@ export class PlayerComponent implements OnInit {
       this.playerData = player;
       console.log(this.playerData);
     });
+  }
+
+  loadHomeAchivements() {
+    this.playersService.getPlayerHomeAchievements(this.playerTag).subscribe((achievements: any) => {
+      this.playerHomeAchievements = achievements;
+      console.log(achievements);
+    })
   }
 }

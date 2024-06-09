@@ -17,4 +17,8 @@ export class PlayersService {
     return this.http.get(`${GlobalConfig.API_BASE_URL}/players/${playerTag}/clan`)
   }
 
+  getPlayerHomeAchievements(playerTag: string): any {
+    return this.http.get(`${GlobalConfig.API_BASE_URL}/players/${playerTag}/achievements/home`)
+  }
+
 }

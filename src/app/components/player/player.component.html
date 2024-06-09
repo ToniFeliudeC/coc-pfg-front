@@ -35,7 +35,7 @@
         <hr>
         <div class="league-row">
             <div class="league-trophies-container">
-                <img class="league-img" src="{{ playerData.league?.iconUrls.medium }}" alt="League icon">
+                <img class="league-img" src="{{ playerData.league?.iconUrls.medium ?? '../../../../../assets/no-league.png' }}" alt="League icon">
                 <div class="name-trophies-container">
                     <h3>{{ playerData.league?.name }}</h3>
                     <div class="trophies-container">
@@ -143,6 +143,16 @@
                     }
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="achievements-container">
+        <h1>Achievements</h1>
+        <hr>
+        <div class="achievements-boxes">
+            @for (achievement of playerHomeAchievements; track achievement) {
+                <app-achievement [stars]="achievement.stars" [title]="achievement.name" [description]="achievement.info" [completitionInfo]="achievement?.completionInfo" [value]="achievement.value" [target]="achievement.target"/>
+            }
+
         </div>
     </div>
 </div>

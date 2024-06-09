@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CocTableComponent } from "../coc-table/coc-table.component";
 import { RankingsService } from '../../services/rankings.service';
 import { LocationSelectorComponent } from "../location-selector/location-selector.component";
@@ -8,10 +8,10 @@ import { LocationsService } from '../../services/locations.service';
     selector: 'app-rankings-view',
     standalone: true,
     templateUrl: './rankings-view.component.html',
-    styleUrl: './rankings-view.component.scss',
+    styleUrls: ['./rankings-view.component.scss'],
     imports: [CocTableComponent, LocationSelectorComponent]
 })
-export class RankingsViewComponent {
+export class RankingsViewComponent implements OnInit {
     
     private rankingsService = inject(RankingsService);
     private locationsService = inject(LocationsService);
@@ -26,12 +26,12 @@ export class RankingsViewComponent {
 
     addLocationId(locationId: any) {
         this.loadRanking(locationId);
-        console.log(this.selectedRanking);
     }
 
     loadCountries() {
         this.locationsService.getCountries().subscribe((countries: any) => {
             this.countries = countries;
+            this.selectFirstOne();
         });
     }
 
@@ -39,6 +39,15 @@ export class RankingsViewComponent {
         this.rankingsService.getTrophiesRanking(locationId).subscribe((ranking: any) => {
             this.selectedRanking = ranking;
         });
+    }
+
+    selectFirstOne() {
+        if (this.countries && this.countries.length > 0) {
+            const firstOneId = this.countries[0].id;
+            this.addLocationId(firstOneId);
+        } else {
+            console.error('No countries available to select');
+        }
     }
 
     clearPlayers() {

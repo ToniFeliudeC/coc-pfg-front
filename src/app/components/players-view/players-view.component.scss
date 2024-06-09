@@ -12,6 +12,82 @@
     backdrop-filter: blur(10px);
     gap: 1em;
 
+    input {
+        padding: 0.5em;
+        font-size: 1em;
+        border-radius: 0.5em;
+        border: 1px solid #ccc;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    button {
+        padding: 1em;
+        box-sizing: border-box;
+        border-radius: 1em;
+        width: 100%;
+        max-width: 300px;
+        cursor: pointer;
+    }
+
+    .player-info { 
+        display: flex;
+        padding: 1em;
+        border-radius: 0.5em;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(0,0,0,0.5);
+        cursor: pointer;
+
+        .league-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 10%;
+        }
+
+        .lvl {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('../../../assets/xp-small.webp');
+            background-repeat: no-repeat;
+            height: 52px;
+            width: 48px;
+        }
+
+        .name-clan-container {
+            display: flex;
+            flex-direction: column;
+
+            .clan {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+            }
+        }
+
+        .wins {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .trophies-container {
+            display: flex;
+            flex-direction: row;
+            gap: 1em;
+            align-items: center;
+            background-color: yellow;
+            padding: 1em;
+            border-radius: 1em;
+            border: 1px solid white;
+        }
+
+    }
     @media screen and (max-width: 800px) {
         margin-left: 1em;
         margin-right: 1em;

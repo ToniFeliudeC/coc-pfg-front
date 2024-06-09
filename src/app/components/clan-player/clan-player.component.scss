@@ -1,0 +1,109 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    padding: 1em;
+    border-radius: 1em;
+    box-sizing: border-box;
+
+    @media screen and (max-width: 1300px) {
+        flex-direction: column;
+    }
+
+    .hr {
+        min-height: 100%;
+        width: 1px;
+        color: white;
+    }
+
+    .league-img {
+        padding: 1em;
+        width: 5%;
+    }
+
+    .name-role-container {
+        box-sizing: border-box;
+        min-width: 50%;
+        padding: 1em;
+
+        @media screen and (max-width: 1300px) {
+            flex-direction: column;
+            width: fit-content;
+            h1, p {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+
+    .donations-container {
+        display: flex;
+        gap: 1em;
+        box-sizing: border-box;
+        padding: 1em;
+        font-size: 0.8em;
+        width: 25%;
+
+        @media screen and (max-width: 1300px) {
+            flex-direction: column;
+            width: fit-content;
+        }
+        
+
+        .donated-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            gap: 1em;
+        }
+
+        .received-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        .amount-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5em;
+            box-sizing: border-box;
+            background-color: white;
+            border-radius: 0.3em;
+            border: 2px solid black;
+            width: 100%;
+        }
+    }
+
+    .trophies-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+        border: 1px solid white;
+        border-radius: 1em;
+        padding: 1em;
+        gap: 1em;
+        width: 20%;
+
+        @media screen and (max-width: 1300px) {
+            width: fit-content
+        }
+
+        img {
+            width: 20px;
+        }
+    } 
+}

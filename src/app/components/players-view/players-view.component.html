@@ -1,3 +1,30 @@
 <div class="container">
-    <p>Welcome to players!</p>
+    <input type="text" placeholder="Enter player tag" #tagInput/>
+    <button (click)="searchPlayer(tagInput.value)">Search</button>
+    <button (click)="emptyCachedPlayers()">Refresh</button>
+    @for (player of players; track player) {
+        <div class="player-info" (click)="viewPlayer(this.getTrimmedTag(player.tag))">
+            <div class="league-container">
+                <img src="{{ player?.league?.iconUrls.small }}" alt="">
+            </div>
+            <div class="lvl">{{ player?.expLevel }}</div>
+            <div class="name-clan-container">
+                <h2>{{ player?.name }}</h2>
+                <div class="clan">
+                    <img src="{{ player?.clan?.badgeUrls.small }}" alt="Clan Emblem">
+                    <p>{{ player?.clan?.name }}</p>
+                </div>
+            </div>
+            <div class="wins">
+                <p>Attacks won: {{ player?.attackWins ?? '0' }}</p>
+                <p>Defenses won: {{ player?.defensesWins ?? '0' }}</p>
+            </div>
+            <div class="trophies-container">
+                <p>{{ player?.trophies }}</p>
+                <img src="../../../assets/trophy.webp" alt="Trophies">
+            </div>
+        </div>
+    } @empty {
+        <p>No selected player yet.</p>
+    }
 </div>

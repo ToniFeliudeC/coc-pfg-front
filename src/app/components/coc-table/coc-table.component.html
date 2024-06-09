@@ -15,13 +15,12 @@
             @for (player of players; track player) {
             <tr>
                 <td><a [href]="'/players/' + getTrimmedTag(player?.tag)">{{ player.name }}</a></td>
-                @if (player.clan) {
-                    <td class="clan-td"> <img src="{{ player.clan.badgeUrls.small }}"/> {{ player.clan.name }}</td>
+                @if (player.clan && player.clan.badgeUrls.small != 'https://api-assets.clashofclans.com/badges/70/_nvBUbqfwZRB10w97Uwoa1GNz7eKE3ODBRYdq78bpis.png') {
+                    <td><a class="clan-td" [href]="'/clans/' + getTrimmedTag(player?.clan?.tag)"><img src="{{ player.clan.badgeUrls.small }}"/>{{ player.clan.name }}</a></td>
                 } @else {
                     <td class="no-clan-td">No clan</td>
                 }
                 <td>{{ player.trophies }}</td>
-                <td>{{ player.tag }}</td>
             }
     </table>
 }

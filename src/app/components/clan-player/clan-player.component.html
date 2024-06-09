@@ -1,0 +1,24 @@
+<div class="container">
+    <img class="league-img" src="{{ leagueUrl }}" alt="league">
+    <div class="hr"></div>
+    <div class="name-role-container">
+        <h1>{{ name }}</h1>
+        <p>{{ role }}</p>
+    </div>
+    <div class="hr"></div>
+    <div class="donations-container">
+        <div class="donated-container">
+            <p>Troops donated:</p>
+            <div class="amount-container">
+                {{ donated }}
+            </div>
+        </div>
+        <div class="received-container">
+            <p>Troops: recieved</p>
+            <div class="amount-container">
+                {{ received }}
+            </div>
+        </div>
+    </div>
+    <div class="trophies-container">{{ trophies }}<img src="../../../assets/trophy.webp" alt=""> </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="achievement-container">
+    <div class="stars-container">
+        <div class="stars-img-container" [ngStyle]="{'background-image': getStarsBackground()}">
+
+        </div>
+    </div>
+    <div class="title-info-container">
+        <h1 class="title">{{ title }}</h1>
+        <div class="description">{{ description }}</div>
+    </div>
+    <div class="progress-check-container">
+        @if (isCompleted()) {
+            <div>{{ completitionInfo }}</div>
+            <img src="../../../assets/green-check.webp" alt="Green check" class="green-check">
+        } @else {
+            <div>{{ value }} / {{ target }}</div>
+        }
+    </div>
+</div>

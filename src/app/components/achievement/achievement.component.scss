@@ -1,0 +1,48 @@
+.achievement-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 150px;
+    border-radius: 1em;
+    background-color: rgba(0,0,0,0.5);
+    padding: 1em;
+    box-sizing: border-box;
+    gap: 1em;
+
+    .stars-container {
+        display: flex;
+        flex-direction: row;
+        width: 10%;
+
+        .stars-img-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+    
+    .title-info-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        .description {
+            color: grey;
+        }
+    }
+
+    .progress-check-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 1em;
+        width: 100%;
+
+        .green-check {
+            width: 50px;
+        }
+
+    }
+
+}

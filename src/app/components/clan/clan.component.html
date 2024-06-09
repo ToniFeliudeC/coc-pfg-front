@@ -1,0 +1,36 @@
+<div class="container">
+    <app-clans-tabs 
+        [totalBuilderBasePoints]="clanData?.clanBuilderBasePoints" 
+        [totalPoints]="clanData?.clanPoints" 
+        [clanWarLeague]="clanData?.warLeague.name" 
+        [emblem]="clanData?.badgeUrls.small" 
+        [clanName]="clanData.name" 
+        [clanDescription]="clanData.description" 
+        [labels]="clanData.labels"
+        [clanLocation]="clanData?.location.name"
+        [language]="clanData?.chatLanguage?.name"
+        [type]="clanData?.type"
+        [requiredTrophies]="clanData?.requiredTrophies"
+        [requiredBuilderBaseTrophies]="clanData?.requiredBuilderBaseTrophies"
+        [requiredTownHallLevel]="clanData?.requiredTownhallLevel"
+        [warsWon]="clanData?.warWins"
+        [warWinStreak]="clanData?.warWinStreak"
+        [clanLeader]="getLeaderName()"
+        [warFrequency]="clanData?.warFrequency"
+        [capitalHallLevel]="clanData?.clanCapital?.capitalHallLevel"
+        [publicWarLog]="clanData?.isWarLogPublic"/>
+    <div class="players-container">
+        <h1>Members {{ clanData?.members }} / 50 </h1>
+        <hr>
+        @for (player of clanData?.memberList; track player) {
+            <app-clan-player
+                [leagueUrl]="player?.league?.iconUrls?.small"
+                [name]="player?.name"
+                [role]="player?.role"
+                [donated]="player?.donations"
+                [received]="player?.donationsReceived"
+                [trophies]="player?.trophies"/>
+        }
+
+    </div>
+</div>
