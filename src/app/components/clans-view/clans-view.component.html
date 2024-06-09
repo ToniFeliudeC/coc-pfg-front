@@ -1,3 +1,35 @@
 <div class="container">
-    <p>clans-view works!</p>
+    <input type="text" placeholder="Enter clan tag" #tagInput/>
+    <button (click)="searchClan(tagInput.value)">Search</button>
+    <button (click)="emptyCachedClans()">Refresh</button>
+    @for (clan of clans; track clan) {
+        <div class="clan-info" (click)="viewClan(this.getTrimmedTag(clan.tag))">
+            <div class="img-container">
+                <img class="emblem-img" src="{{ clan?.badgeUrls?.small }}" alt="Clan emblem">
+            </div>
+            <hr>
+            <div class="name-type-trophies-members-container">
+                <div class="name-type-container">
+                    <h1>{{ clan?.name }}</h1>
+                    <p>{{ clan?.type === 'open' ? 'Anyone can join' : 'Private' }}</p>
+                </div>
+                <div class="trophies-members-container">
+                    <div class="trophies-container">
+                        {{ clan?.clanPoints }}
+                        <img class="trophy-img" src="../../../assets/trophy.webp" alt="Trophy">
+                    </div>
+                    <p>Members:</p>
+                    <h3>{{ clan?.members }} / 50</h3>
+                </div>
+            </div>
+            <hr>
+            <div class="labels-container">
+                @for (label of clan?.labels; track label) {
+                    <img src="{{ label?.iconUrls?.small }}" alt="Clan Label">
+                }
+            </div>
+        </div>
+    } @empty {
+        <p>No selected clan yet.</p>
+    }
 </div>
