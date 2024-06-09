@@ -32,7 +32,10 @@ export class PlayerComponent implements OnInit {
   hasSuperTroops = false;
 
   playerData: any;
+
   playerHomeAchievements: any;
+  playerBuilderBaseAchievements: any;
+  playerClanCapitalAchievements: any;
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: { get: (arg0: string) => any; }) => {
@@ -40,7 +43,7 @@ export class PlayerComponent implements OnInit {
       if (playerTag) {
         this.playerTag = playerTag;
         this.loadPlayer();
-        this.loadHomeAchivements();
+        this.loadAchivements();
       }
     });
   }
@@ -66,8 +69,6 @@ export class PlayerComponent implements OnInit {
     return this.superTroopsNames.some(name => name === troopName);
   }
 
-  
-
   getTownhallImagePath(): string {
     const townHallLevel = String(this.playerData.townHallLevel);
     const townHallWeaponLevel = String(this.playerData.townHallWeaponLevel);
@@ -86,10 +87,15 @@ export class PlayerComponent implements OnInit {
     });
   }
 
-  loadHomeAchivements() {
+  loadAchivements() {
     this.playersService.getPlayerHomeAchievements(this.playerTag).subscribe((achievements: any) => {
-      this.playerHomeAchievements = achievements;
-      console.log(achievements);
+      this.playerHomeAchievements = achievements;;
+    })
+    this.playersService.getPlayerBuilderBaseAchievements(this.playerTag).subscribe((achievements: any) => {
+      this.playerBuilderBaseAchievements = achievements;
+    })
+    this.playersService.getPlayerHomeAchievements(this.playerTag).subscribe((achievements: any) => {
+      this.playerClanCapitalAchievements = achievements;
     })
   }
 }

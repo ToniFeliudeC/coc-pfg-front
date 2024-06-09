@@ -152,7 +152,20 @@
             @for (achievement of playerHomeAchievements; track achievement) {
                 <app-achievement [stars]="achievement.stars" [title]="achievement.name" [description]="achievement.info" [completitionInfo]="achievement?.completionInfo" [value]="achievement.value" [target]="achievement.target"/>
             }
-
+        </div>
+        <h1>Builder Base Achievements</h1>
+        <hr>
+        <div class="achievements-boxes">
+            @for (achievement of playerBuilderBaseAchievements; track achievement) {
+                <app-achievement [stars]="achievement.stars" [title]="achievement.name" [description]="achievement.info" [completitionInfo]="achievement?.completionInfo" [value]="achievement.value" [target]="achievement.target"/>
+            }
+        </div>
+        <h1>Clan Capital Achievements</h1>
+        <hr>
+        <div class="achievements-boxes">
+            @for (achievement of playerClanCapitalAchievements; track achievement) {
+                <app-achievement [stars]="achievement.stars" [title]="achievement.name" [description]="achievement.info" [completitionInfo]="achievement?.completionInfo" [value]="achievement.value" [target]="achievement.target"/>
+            }
         </div>
     </div>
     <div class="charts-container">

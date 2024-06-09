@@ -21,4 +21,12 @@ export class PlayersService {
     return this.http.get(`${GlobalConfig.API_BASE_URL}/players/${playerTag}/achievements/home`)
   }
 
+  getPlayerBuilderBaseAchievements(playerTag: string): any {
+    return this.http.get(`${GlobalConfig.API_BASE_URL}/players/${playerTag}/achievements/builderbase`)
+  }
+
+  getPlayerClanCapitalAchievements(playerTag: string): any {
+    return this.http.get(`${GlobalConfig.API_BASE_URL}/players/${playerTag}/achievements/clancapital`)
+  }
+
 }
