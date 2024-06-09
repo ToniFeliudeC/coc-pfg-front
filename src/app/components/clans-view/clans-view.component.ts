@@ -24,7 +24,7 @@ export class ClansViewComponent implements OnInit {
   searchClan(tag: string) {
     this.clansService.getClan(tag).subscribe(
         (clan: any) => {
-            if (clan && clan.reason !== 'notFound') {
+            if (clan && clan.reason !== 'notFound' && !this.clans.some(existingClan => existingClan.tag === clan.tag)) {
               this.clans.push(clan);
               this.cacheClans();
             }

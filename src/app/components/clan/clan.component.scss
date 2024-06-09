@@ -22,8 +22,20 @@
         width: 100%;
     }
 
+    .charts-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        width: 100%;
+    }
+
     @media screen and (max-width: 800px) {
         margin-left: 1em;
         margin-right: 1em;
     }
 }
+
+html {
+    scroll-behavior: smooth;
+}
+  

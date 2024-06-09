@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clan-player',
@@ -14,4 +15,18 @@ export class ClanPlayerComponent {
   @Input() donated: any;
   @Input() received: any;
   @Input() trophies: any;
+  @Input() playerTag: any;
+
+  constructor(private router: Router) {}
+
+  viewPlayer(tag: string) {
+    this.router.navigate(['/players', tag]);
+  }
+
+  // Función para eliminar el primer carácter del tag
+  getTrimmedTag(tag: string): string {
+    return tag ? tag.substring(1) : '';
+  }
+
+
 }

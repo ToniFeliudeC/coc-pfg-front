@@ -11,7 +11,11 @@
     border-radius: 25px;
     border: 1px solid black;
     backdrop-filter: blur(10px);
-    cursor: pointer;
+
+    @media screen and (max-width: 800px) {
+        margin-left: 1em;
+        margin-right: 1em;
+    }
 
     input {
         padding: 0.5em;
@@ -40,12 +44,21 @@
         padding: 1em;
         box-sizing: border-box;
         height: fit-content;
+        cursor: pointer;
+
+        @media screen and (max-width: 1240px) {
+            flex-direction: column;
+        }
 
         .img-container {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 10%;
+
+            @media screen and (max-width: 1240px) {
+                width: 100%;
+            }
             
         }
 
@@ -55,6 +68,8 @@
             padding: 1em;
             width: 100%;
             justify-content: space-between;
+            flex-wrap: wrap;
+            box-sizing: border-box;
 
             .trophies-members-container {
                 display: flex;
@@ -76,6 +91,10 @@
             flex-wrap: wrap;
             min-width: 15em;
         }
+    }
+
+    .clan-info:hover {
+        border: 1px solid white;
     }
 
 }

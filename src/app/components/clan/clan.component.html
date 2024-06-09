@@ -1,4 +1,4 @@
-<div class="container">
+<div #container class="container">
     <app-clans-tabs 
         [totalBuilderBasePoints]="clanData?.clanBuilderBasePoints" 
         [totalPoints]="clanData?.clanPoints" 
@@ -29,8 +29,25 @@
                 [role]="player?.role"
                 [donated]="player?.donations"
                 [received]="player?.donationsReceived"
-                [trophies]="player?.trophies"/>
+                [trophies]="player?.trophies"
+                [playerTag]="player?.tag"/>
         }
 
+    </div>
+    <div class="charts-container">
+        <h1>Charts</h1>
+        <hr>
+        <h3>Trophies</h3>
+        <app-trophies-chart [labels]="getMembersNames()" [data]="getMembersTrophies()" />
+        <hr>
+        <h3>League Distribution</h3>
+        <app-league-distribution-chart [clanData]="clanData"/>
+        <hr>
+        <h3>Role - Performance</h3>
+        <app-roles-comparison-chart [clanData]="clanData"/>
+        <hr>
+        <h3>Town Hall Distribution</h3>
+        <app-town-hall-distribution-chart [clanData]="clanData"/>
+        
     </div>
 </div>

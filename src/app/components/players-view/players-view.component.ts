@@ -23,15 +23,15 @@ export class PlayersViewComponent implements OnInit {
 
   searchPlayer(tag: string) {
     this.playersService.getPlayer(tag).subscribe(
-        (player: any) => {
-            if (player && player.reason !== 'notFound') {
-              this.players.push(player);
-              this.cachePlayers();
-            }
-            
+      (player: any) => {
+        if (player && player.reason !== 'notFound' && !this.players.some(existingPlayer => existingPlayer.tag === player.tag)) {
+          this.players.push(player);
+          this.cachePlayers();
         }
+      }
     );
   }
+  
 
   viewPlayer(tag: string) {
       this.router.navigate(['/players', tag]);
@@ -61,7 +61,7 @@ export class PlayersViewComponent implements OnInit {
       const cachedPlayers = sessionStorage.getItem('cachedPlayers');
       if (cachedPlayers) {
         this.players = [];
-        sessionStorage.clear();
+        sessionStorage
       }
     } catch (error) {
       console.error('Error loading cached players:', error);
