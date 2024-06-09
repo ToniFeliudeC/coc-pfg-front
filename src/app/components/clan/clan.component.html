@@ -39,15 +39,15 @@
         <hr>
         <h3>Trophies</h3>
         <app-trophies-chart [labels]="getMembersNames()" [data]="getMembersTrophies()" />
-        <hr>
         <h3>League Distribution</h3>
         <app-league-distribution-chart [clanData]="clanData"/>
-        <hr>
         <h3>Role - Performance</h3>
         <app-roles-comparison-chart [clanData]="clanData"/>
-        <hr>
         <h3>Town Hall Distribution</h3>
         <app-town-hall-distribution-chart [clanData]="clanData"/>
-        
+        <h3>Player level distribution</h3>
+        <app-player-level-distribution-chart [clanData]="clanData"/>
+        <h3>Donations comparison</h3>
+        <app-donations-comparison-chart [clanData]="clanData"/>
     </div>
 </div>

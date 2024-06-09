@@ -7,11 +7,13 @@ import { TrophiesChartComponent } from '../charts/trophies-chart/trophies-chart.
 import { LeaguesDistributionChartComponent } from '../charts/league-distribution-chart/league-distribution-chart.component';
 import { RolesComparisonChartComponent } from '../charts/roles-comparison-chart/roles-comparison-chart.component';
 import { TownHallDistributionChartComponent } from '../charts/town-hall-distribution-chart/town-hall-distribution-chart.component';
+import { PlayerLevelDistributionChartComponent } from '../charts/player-level-distribution-chart/player-level-distribution-chart.component';
+import { DonationsComparisonChartComponent } from '../charts/donations-comparison-chart/donations-comparison-chart.component';
 
 @Component({
   selector: 'app-clan',
   standalone: true,
-  imports: [ClansTabsComponent, ClanPlayerComponent, TrophiesChartComponent, LeaguesDistributionChartComponent, RolesComparisonChartComponent, TownHallDistributionChartComponent],
+  imports: [ClansTabsComponent, ClanPlayerComponent, TrophiesChartComponent, LeaguesDistributionChartComponent, RolesComparisonChartComponent, TownHallDistributionChartComponent, PlayerLevelDistributionChartComponent, DonationsComparisonChartComponent],
   templateUrl: './clan.component.html',
   styleUrl: './clan.component.scss'
 })

@@ -5,14 +5,18 @@ import { NgClass } from "@angular/common";
 import { TroopIconComponent } from "../troop-icon/troop-icon.component";
 import { animals } from "./animals";
 import { siegeMachines } from "./siege-machines";
+import { superTroops } from "./super-troops";
 import { AchievementComponent } from "../achievement/achievement.component";
+import { PlayerTrophiesChartComponent } from "../charts/player-trophies-chart/player-trophies-chart.component";
+import { PlayerPerformanceChartComponent } from "../charts/player-performance-chart/player-performance-chart.component";
+import { PlayerArmyLevelsChartComponent } from "../charts/player-army-levels-chart/player-army-levels-chart.component";
 
 @Component({
     selector: 'app-player',
     standalone: true,
     templateUrl: './player.component.html',
     styleUrl: './player.component.scss',
-    imports: [NgClass, TroopIconComponent, AchievementComponent]
+    imports: [NgClass, TroopIconComponent, AchievementComponent, PlayerTrophiesChartComponent, PlayerPerformanceChartComponent, PlayerArmyLevelsChartComponent]
 })
 export class PlayerComponent implements OnInit {
 
@@ -22,8 +26,10 @@ export class PlayerComponent implements OnInit {
   private route: ActivatedRoute = inject(ActivatedRoute);
   animalsNames = animals;
   siegeMachinesNames = siegeMachines;
+  superTroopsNames = superTroops;
   hasAnimals = false;
   hasSiegeMachines = false;
+  hasSuperTroops = false;
 
   playerData: any;
   playerHomeAchievements: any;
@@ -52,6 +58,15 @@ export class PlayerComponent implements OnInit {
     }
     return this.siegeMachinesNames.some(name => name === troopName);
   }
+
+  isSuperTroop(troopName: string): boolean {
+    if (this.superTroopsNames.some(name => name === troopName)) {
+      this.hasSuperTroops = true;
+    }
+    return this.superTroopsNames.some(name => name === troopName);
+  }
+
+  
 
   getTownhallImagePath(): string {
     const townHallLevel = String(this.playerData.townHallLevel);

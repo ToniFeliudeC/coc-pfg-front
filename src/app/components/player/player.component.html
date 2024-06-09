@@ -86,7 +86,7 @@
             <h1>Troops</h1>
             <div class="troop-boxes">
                 @for (troop of playerData?.troops; track troop) {
-                    @if (troop.village === 'home' && !isAnimal(troop.name) && !isSiegeMachine(troop.name)) {
+                    @if (troop.village === 'home' && !isAnimal(troop.name) && !isSiegeMachine(troop.name) && !isSuperTroop(troop.name)) {
                         <app-troop-icon [level]="troop.level" [name]="troop.name"/>
                     }       
                 }
@@ -154,6 +154,16 @@
             }
 
         </div>
+    </div>
+    <div class="charts-container">
+        <h1>Charts</h1>
+        <hr>
+        <h3>Trophies - Best Trophies Comparison</h3>
+        <app-player-trophies-chart [playerData]="playerData"/>
+        <h3>Performance Radar</h3>
+        <app-player-performance-chart [playerData]="playerData"/>       
+        <h3>Army Levels</h3>
+        <app-player-army-levels-chart [playerData]="playerData"/>       
     </div>
 </div>
 
