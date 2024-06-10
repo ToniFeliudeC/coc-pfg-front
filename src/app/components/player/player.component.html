@@ -17,13 +17,15 @@
                     <div class="label">
                         <img src="{{ label.iconUrls.small }}" alt="Player label">
                     </div>
+                } @empty {
+                    <p>No labels yet!</p>
                 }
             </div>
         </div>
         <hr>
         <div class="clan-row">
             @if (playerData.clan) {
-                <h3 class="clan-name">{{ playerData.clan?.name }}</h3>
+                <h3 class="clan-name"><a href="/clans/{{ getTrimmedTag(playerData?.clan?.tag) }}">{{ playerData.clan?.name }}</a></h3>
                 <img class="clan-badge" src="{{ playerData.clan?.badgeUrls.medium }}"  alt="Clan badge">
             } @else {
                 <h3 class="clan-name">No clan</h3>
@@ -83,28 +85,50 @@
             <img [src]="getTownhallImagePath()" alt="Town hall">
         </div>
         <div class="troops-container">
-            <h1>Troops</h1>
+            <h1 [ngClass]="{ active: selectedTroopTab === 0 }" (click)="selectTroopTab(1)">Troops <img class="swap-icon" (click)="selectTroopTab(1)" src="../../../assets/swap-icon.png" alt="Swap icon"></h1>
+            <h1 [ngClass]="{ active: selectedTroopTab === 1 }" (click)="selectTroopTab(0)">Builder Base Troops <img class="swap-icon" (click)="selectTroopTab(0)" src="../../../assets/swap-icon.png" alt="Swap icon"></h1>
             <div class="troop-boxes">
-                @for (troop of playerData?.troops; track troop) {
-                    @if (troop.village === 'home' && !isAnimal(troop.name) && !isSiegeMachine(troop.name) && !isSuperTroop(troop.name)) {
-                        <app-troop-icon [level]="troop.level" [name]="troop.name"/>
-                    }       
+                @if (selectedTroopTab === 0) {
+                    @for (troop of playerData?.troops; track troop) {
+                        @if (troop.village === 'home' && !isAnimal(troop.name) && !isSiegeMachine(troop.name) && !isSuperTroop(troop.name)) {
+                            <app-troop-icon [level]="troop.level" [name]="troop.name"/>
+                        }       
+                    }
+                } @else if (selectedTroopTab === 1) {
+                    @for (troop of playerData?.troops; track troop) {
+                        @if (troop.village === 'builderBase' && !isAnimal(troop.name) && !isSiegeMachine(troop.name) && !isSuperTroop(troop.name)) {
+                            <app-troop-icon [level]="troop.level" [name]="troop.name"/>
+                        }       
+                    }
                 }
+
             </div>
         </div>
     </div>
     <div class="heroes-animals-spells-machines-container">
         <div class="heroes-animals-container">
             <div class="heroes-container">
-                <h1>Heroes</h1>
+                <h1 [ngClass]="{ active: selectedHeroesTab === 0 }" (click)="selectHeroesTab(1)">Heroes<img class="swap-icon" (click)="selectHeroesTab(1)" src="../../../assets/swap-icon.png" alt="Swap icon"></h1>
+                <h1 [ngClass]="{ active: selectedHeroesTab === 1 }" (click)="selectHeroesTab(0)">Builder Base Heroes<img class="swap-icon" (click)="selectHeroesTab(0)" src="../../../assets/swap-icon.png" alt="Swap icon"></h1>
                 <div class="troop-boxes">
-                    @for (hero of playerData?.heroes; track hero) {
-                        @if (hero.village === 'home') {
-                            <app-troop-icon [level]="hero.level" [name]="hero.name"/>
+                    @if (selectedHeroesTab === 0) {
+                        @for (hero of playerData?.heroes; track hero) {
+                            @if (hero.village === 'home') {
+                                <app-troop-icon [level]="hero.level" [name]="hero.name"/>
+                            }
+                        } @empty {
+                            <p>No heroes yet!</p>
                         }
-                    } @empty {
-                        <p>No heroes yet!</p>
+                    } @else if (selectedHeroesTab === 1) {
+                        @for (hero of playerData?.heroes; track hero) {
+                            @if (hero.village === 'builderBase') {
+                                <app-troop-icon [level]="hero.level" [name]="hero.name"/>
+                            }
+                        } @empty {
+                            <p>No heroes yet!</p>
+                        }
                     }
+
                 </div>
             </div>
             <div class="animals-container">

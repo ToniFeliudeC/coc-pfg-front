@@ -12,6 +12,6 @@ export class RankingsService {
   constructor() { }
 
   getTrophiesRanking(locationId: string): any {
-    return this.http.get(`${GlobalConfig.API_BASE_URL}/locations/${locationId}/rankings/players`);
+    return this.http.get(`${GlobalConfig.API_BASE_URL}/locations/${locationId}/rankings/players/fixed`);
   }
 }

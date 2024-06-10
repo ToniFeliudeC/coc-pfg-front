@@ -37,6 +37,8 @@ export class PlayerComponent implements OnInit {
   playerBuilderBaseAchievements: any;
   playerClanCapitalAchievements: any;
 
+  selectedTroopTab: number = 0;
+  selectedHeroesTab: number = 0;
   ngOnInit() {
     this.route.paramMap.subscribe((params: { get: (arg0: string) => any; }) => {
       const playerTag = params.get('playerTag');
@@ -46,6 +48,14 @@ export class PlayerComponent implements OnInit {
         this.loadAchivements();
       }
     });
+  }
+
+  selectTroopTab(index: number) {
+    this.selectedTroopTab = index;
+  }
+
+  selectHeroesTab(index: number) {
+    this.selectedHeroesTab = index;
   }
 
   isAnimal(troopName: string): boolean {
@@ -79,6 +89,11 @@ export class PlayerComponent implements OnInit {
    
     return  "../../../assets/townhalls/" + townHallLevel + "." + townHallWeaponLevel + ".png";  
   }
+
+    // Función para eliminar el primer carácter del tag
+    getTrimmedTag(tag: string): string {
+      return tag ? tag.substring(1) : '';
+    }
 
   loadPlayer() {
     this.playersService.getPlayer(this.playerTag).subscribe((player: any) => {

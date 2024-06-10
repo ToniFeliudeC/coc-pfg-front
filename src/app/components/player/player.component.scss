@@ -242,6 +242,21 @@
                 gap: 1em;
                 box-sizing: border-box;
             }
+
+            h1 {
+                display: none;
+                cursor: pointer;
+                align-items: center;
+                gap: 0.5em;
+
+                .swap-icon {
+                    height: 40px;
+                }
+            }
+
+            .active {
+                display: flex;
+            }
         }
     }
 
@@ -270,6 +285,20 @@
                     display: flex;
                     flex-wrap: wrap;
                     gap: 1em;
+                }
+                h1 {
+                    display: none;
+                    cursor: pointer;
+                    align-items: center;
+                    gap: 0.5em;
+    
+                    .swap-icon {
+                        height: 40px;
+                    }
+                }
+    
+                .active {
+                    display: flex;
                 }
             }
             .animals-container {
